@@ -1,0 +1,21 @@
+--- bes-3.12.0/conf/ax_lib_gdal.m4.orig	2013-09-12 00:22:22.000000000 +0200
++++ bes-3.12.0/conf/ax_lib_gdal.m4	2014-03-03 15:25:45.416954681 +0100
+@@ -83,7 +83,7 @@
+ 	dnl
+ 
+ 	gdal_version_req=ifelse([$1], [], [], [$1])
+-	if test "$found_gdal" = "yes" -a -n "$gdal_version_req"; then
++	if test "$found_gdal" != "no" -a -n "$gdal_version_req"; then
+ 
+ 	    AC_MSG_CHECKING([if GDAL version is >= $gdal_version_req])
+ 
+--- bes-3.12.0/functions/swath2grid/DAP_Dataset.cpp.orig	2014-03-03 15:50:13.366893077 +0100
++++ bes-3.12.0/functions/swath2grid/DAP_Dataset.cpp	2014-03-03 16:41:14.653431275 +0100
+@@ -33,7 +33,6 @@
+ #include "Grid.h"
+ #include "Float64.h"
+ 
+-#include "ce_functions.h"
+ #include "util.h"
+ #include "debug.h"
+ 
