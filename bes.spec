@@ -6,7 +6,7 @@ Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.opendap.org/pub/source/%{name}-%{version}.tar.gz
-# Source0-md5:	624d7665bd8f756089b58df50e389f45
+# Source0-md5:	582e9c4fc5ca27b78982ea0a014c7035
 Patch0:		%{name}-missing.patch
 Patch1:		%{name}-gdal.patch
 URL:		http://opendap.org/
