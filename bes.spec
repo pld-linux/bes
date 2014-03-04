@@ -137,7 +137,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/etc/rc.d/init.d,/etc/pki/bes/{cacerts,public}} \
 	$RPM_BUILD_ROOT{/var/cache/bes,/var/log/bes}
 
-%{__make} install \
+%{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__mv} $RPM_BUILD_ROOT%{_bindir}/besd $RPM_BUILD_ROOT/etc/rc.d/init.d
