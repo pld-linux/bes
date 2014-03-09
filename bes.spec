@@ -2,7 +2,7 @@ Summary:	OPeNDAP Back End Server software framework
 Summary(pl.UTF-8):	Szkielet OPeNDAP Back End Server (serwera backendu OPeNDAP)
 Name:		bes
 Version:	3.12.0
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.opendap.org/pub/source/%{name}-%{version}.tar.gz
@@ -135,7 +135,8 @@ Statyczne biblioteki serwera backendu OPeNDAP.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/etc/rc.d/init.d,/etc/pki/bes/{cacerts,public}} \
-	$RPM_BUILD_ROOT{/var/cache/bes,/var/log/bes}
+	$RPM_BUILD_ROOT{/var/cache/bes,/var/log/bes} \
+	$RPM_BUILD_ROOT%{_datadir}/hyrax/data
 
 %{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -183,6 +184,8 @@ fi
 %dir /etc/pki/bes/cacerts
 %dir /etc/pki/bes/public
 %attr(754,root,root) /etc/rc.d/init.d/besd
+%dir %{_datadir}/hyrax
+%dir %{_datadir}/hyrax/data
 %attr(775,bes,bes) %dir /var/cache/bes
 %attr(775,bes,bes) %dir /var/log/bes
 %attr(775,bes,bes) %dir /var/run/bes
