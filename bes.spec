@@ -1,12 +1,12 @@
 Summary:	OPeNDAP Back End Server software framework
 Summary(pl.UTF-8):	Szkielet OPeNDAP Back End Server (serwera backendu OPeNDAP)
 Name:		bes
-Version:	3.13.1
+Version:	3.13.2
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.opendap.org/pub/source/%{name}-%{version}.tar.gz
-# Source0-md5:	17da4130eafc56ece37dc904cbb5b73f
+# Source0-md5:	bef8f57a6c0be8798b8dd09462e5526e
 Patch0:		%{name}-missing.patch
 Patch1:		%{name}-gdal.patch
 URL:		http://opendap.org/
