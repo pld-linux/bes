@@ -1,0 +1,43 @@
+--- bes-3.17.0/configure.ac.orig	2016-02-03 19:37:02.308179475 +0100
++++ bes-3.17.0/configure.ac	2016-03-26 09:16:06.978452939 +0100
+@@ -406,7 +406,6 @@
+ 	[with_openjpeg_prefix=$ac_bes_dependencies_prefix])
+ 
+ save_LIBS=$LIBS
+-LIBS="-L$with_openjpeg_prefix/lib $LIBS"
+ AC_CHECK_LIB(openjp2, opj_version, [OPENJPEG_FOUND="yes"], [OPENJPEG_FOUND="no"], [-lm])
+ LIBS=$save_LIBS
+ 
+@@ -457,12 +456,12 @@
+ 
+ 
+ ac_cfits_save_LDFLAGS="$LDFLAGS"
+-LDFLAGS="$LDFLAGS -L$CFITS_PATH_LIBDIR"
++AS_IF([test -n "$CFITS_PATH_LIBDIR"],[LDFLAGS="$LDFLAGS -L$CFITS_PATH_LIBDIR"])
+ AC_CHECK_LIB(cfitsio, fits_is_url_absolute, 
+ 
+ [ac_cfits_ok='yes'
+ CFITS_LIBS="-lcfitsio"
+-CFITS_LDFLAGS="-L${CFITS_PATH_LIBDIR}" 
++AS_IF([test -n "$CFITS_PATH_LIBDIR"], [CFITS_LDFLAGS="-L${CFITS_PATH_LIBDIR}"], [CFITS_LDFLAGS=""])
+ AC_SUBST([CFITS_LDFLAGS])
+ AC_SUBST([CFITS_LIBS])],
+ 
+@@ -474,7 +473,7 @@
+ CFITS_CPPFLAGS=
+ ac_cfits_h='no'
+ ac_cfits_save_CPPFLAGS="$CPPFLAGS"
+-CPPFLAGS="$CPPFLAGS -I$CFITS_PATH_INC"
++AS_IF([test -n "$CFITS_PATH_INC"], [CPPFLAGS="$CPPFLAGS -I$CFITS_PATH_INC"])
+ AC_CHECK_HEADERS([fitsio.h],
+   [ac_cfits_h='yes'],
+   [ac_cfits_h='no']
+@@ -482,7 +481,7 @@
+ CPPFLAGS=$ac_cfits_save_CPPFLAGS
+ 
+ AS_IF([test "$ac_cfits_h" = 'yes' ],
+-  [CFITS_CPPFLAGS="-I$CFITS_PATH_INC"]
++  [AS_IF([test -n "$CFITS_PATH_INC"], [CFITS_CPPFLAGS="-I$CFITS_PATH_INC"], [CFITS_CPPFLAGS=""])]
+ )
+ AC_SUBST([CFITS_CPPFLAGS])
+ 

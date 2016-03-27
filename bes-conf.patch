@@ -1,0 +1,46 @@
+--- bes-3.17.0/dispatch/bes/bes.conf.in.orig	2016-02-09 18:53:55.761483829 +0100
++++ bes-3.17.0/dispatch/bes/bes.conf.in	2016-03-26 07:13:37.425428037 +0100
+@@ -19,12 +19,12 @@
+ # number sign (#).
+ # For example: BES.User=#172
+ 
+-BES.User=user_name
+-BES.Group=group_name
++BES.User=bes
++BES.Group=bes
+ 
+ # Where should the BES keep its log file?
+ 
+-BES.LogName=@prefix@/var/bes.log
++BES.LogName=/var/log/bes/bes.log
+ BES.LogVerbose=no
+ 
+ # Set the value of BES.Catalog.catalog.RootDirectory to the root
+@@ -53,7 +53,7 @@
+ # easy to see what's in the cache at any given time, even when it's a 
+ # directory like /tmp that's used by many programs. 
+ 
+-BES.UncompressCache.dir=/tmp
++BES.UncompressCache.dir=/var/cache/bes
+ BES.UncompressCache.prefix=uncompress_cache
+ BES.UncompressCache.size=500
+ 
+@@ -118,12 +118,12 @@
+ BES.ServerSecure=no
+ 
+ # BES.ServerSecurePort=10003
+-# BES.ServerCertFile=/full/path/to/serverside/certificate/file.pem
+-# BES.ServerCertAuthFile=/full/path/to/serverside/certificate/authority/file.pem
+-# BES.ServerKeyFile=/full/path/to/serverside/key/file.pem
+-# BES.ClientCertFile=/full/path/to/clientside/certificate/file.pem
+-# BES.ClientCertAuthFile=/full/path/to/clientside/certificate/authority/file.pem
+-# BES.ClientKeyFile=/full/path/to/clientside/key/file.pem
++# BES.ServerCertFile=/etc/pki/bes/certs/server.pem
++# BES.ServerCertAuthFile=/etc/pki/bes/cacerts/server.pem
++# BES.ServerKeyFile=/etc/pki/bes/public/server.pem
++# BES.ClientCertFile=/etc/pki/bes/certs/client.pem
++# BES.ClientCertAuthFile=/etc/pki/bes/cacerts/client.pem
++# BES.ClientKeyFile=/etc/pki/bes/public/client.pem
+ 
+ # Help file locations, for text, html, and xml versions
+ 

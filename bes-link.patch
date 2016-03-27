@@ -1,0 +1,13 @@
+--- bes-3.17.0/xmlcommand/Makefile.am.orig	2015-04-05 05:21:13.799709287 +0200
++++ bes-3.17.0/xmlcommand/Makefile.am	2016-03-26 11:56:07.188050055 +0100
+@@ -27,9 +27,7 @@
+ 
+ libbes_xml_command_la_SOURCES = $(SRCS) $(HDRS)
+ libbes_xml_command_la_LDFLAGS = -version-info $(LIBXMLCOMMAND_VERSION)
+-libbes_xml_command_la_LIBADD = 
+-
+-# ../dispatch/libbes_dispatch.la $(XML2_LIBS)
++libbes_xml_command_la_LIBADD = ../dispatch/libbes_dispatch.la $(XML2_LIBS)
+ 
+ libdap_xml_module_la_SOURCES = $(DAP_SRCS) $(DAP_HDRS)
+ libdap_xml_module_la_LDFLAGS = -avoid-version -module
