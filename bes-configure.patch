@@ -41,3 +41,34 @@
  )
  AC_SUBST([CFITS_CPPFLAGS])
  
+@@ -518,8 +518,8 @@
+             [HDFEOS2_DIR="$ac_bes_dependencies_prefix"])
+ 
+ AS_IF([test -n "$HDFEOS2_DIR"],
+-    [HDFEOS2_CPPFLAGS="-I$HDFEOS2_DIR/include -DUSE_HDFEOS2_LIB"
+-    HDFEOS2_LDFLAGS="-L$HDFEOS2_DIR/lib"
++    [AS_IF([test x"$HDFEOS2_DIR" = xyes], [HDFEOS2_CPPFLAGS="-DUSE_HDFEOS2_LIB"], [HDFEOS2_CPPFLAGS="-I$HDFEOS2_DIR/include -DUSE_HDFEOS2_LIB"])
++    AS_IF([test x"$HDFEOS2_DIR" = xyes], [HDFEOS2_LDFLAGS=], [HDFEOS2_LDFLAGS="-L$HDFEOS2_DIR/lib"])
+     HDFEOS2_LIBS="-lhdfeos -lGctp"
+     AC_MSG_NOTICE([HDFEOS2 set to true])
+     AM_CONDITIONAL([HDFEOS2], [true])],
+--- bes-3.17.0/conf/hdf4.m4.orig	2015-04-05 05:21:13.650708879 +0200
++++ bes-3.17.0/conf/hdf4.m4	2016-03-28 20:38:01.114526832 +0200
+@@ -63,7 +63,7 @@
+     ],
+     [
+       AC_MSG_NOTICE(HDF4_PATH_LIBDIR is NOT set)
+-      for ac_hdf4_libdir in /usr/local/hdf4.2r1/lib64 /opt/hdf4.2r1/lib64 \ 
++      for ac_hdf4_libdir in "" /usr/local/hdf4.2r1/lib64 /opt/hdf4.2r1/lib64 \ 
+        /usr/hdf4.2r1/lib64 /usr/local/lib64/hdf4.2r1 /opt/lib64/hdf4.2r1 \
+        /usr/lib64/hdf4.2r1 /usr/local/hdf/lib64/ /opt/hdf/lib64 \
+        /usr/hdf/lib64 /usr/local/lib64/hdf /opt/lib64/hdf /usr/lib64/hdf \
+@@ -101,7 +101,7 @@
+     ],
+     [
+        AC_MSG_NOTICE(HDF4_PATH_INC is NOT set)
+-      for ac_hdf4_incdir in /usr/local/hdf4.2r1/include /opt/hdf4.2r1/include \
++      for ac_hdf4_incdir in "" /usr/local/hdf4.2r1/include /opt/hdf4.2r1/include \
+        /usr/hdf4.2r1/include /usr/local/include/hdf4.2r1 \
+        /opt/include/hdf4.2r1 /usr/include/hdf4.2r1 /usr/local/hdf/include \
+        /opt/hdf/include /usr/hdf/include /usr/local/include/hdf \
