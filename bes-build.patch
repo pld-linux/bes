@@ -1,0 +1,11 @@
+--- bes-3.17.4/modules/hdf4_handler/HDFEOS2.cc~	2016-06-02 23:17:54.000000000 +0200
++++ bes-3.17.4/modules/hdf4_handler/HDFEOS2.cc	2018-05-22 13:45:20.035730813 +0200
+@@ -1771,7 +1771,7 @@ void File::handle_grid_cf_attrs() throw(
+             // We may find such cases for other products and will tackle them also.
+             if (true == (*i)->addfvalueattr) {
+                 if((((*j)->getFillValue()).empty()) && ((*j)->getType()==DFNT_FLOAT32 )) {
+-                    float tempfillvalue = HUGE;
++                    float tempfillvalue = std::numeric_limits<double>::max();
+                     (*j)->addFillValue(tempfillvalue);
+                     (*j)->setAddedFillValue(true);
+                 }

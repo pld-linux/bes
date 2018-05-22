@@ -4,15 +4,16 @@
 Summary:	OPeNDAP Back End Server software framework
 Summary(pl.UTF-8):	Szkielet OPeNDAP Back End Server (serwera backendu OPeNDAP)
 Name:		bes
-Version:	3.17.1
-Release:	5
+Version:	3.17.4
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	https://www.opendap.org/pub/source/%{name}-%{version}.tar.gz
-# Source0-md5:	09d5f49ff524d6981d6418643c674d16
+# Source0-md5:	c8e5ea98fd9f4a2d490b3e61202a59f9
 Patch0:		%{name}-conf.patch
 Patch1:		%{name}-configure.patch
 Patch2:		%{name}-link.patch
+Patch3:		%{name}-build.patch
 URL:		https://www.opendap.org/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.10
@@ -433,6 +434,7 @@ Statyczne biblioteki serwera backendu OPeNDAP.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__libtoolize}
